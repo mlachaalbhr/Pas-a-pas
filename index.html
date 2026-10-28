@@ -71,6 +71,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .mcard{width:100%;height:100%;display:flex;flex-direction:column;text-align:left;padding:8px;border-radius:20px;background:var(--surface);border:1px solid var(--soft-2);box-shadow:0 24px 50px -32px rgba(0,0,0,.35);transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
 .mcard:hover{transform:translateY(-4px);box-shadow:0 34px 60px -30px rgba(0,0,0,.42);border-color:#d6d6d6}
 .mthumb{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:radial-gradient(70% 90% at 50% 40%,#2a2a2a 0%,#0b0b0b 70%);display:grid;place-items:center}
+.mthumb[style]{background-size:cover;background-position:center}
+.mthumb[style]::before{background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 70%,rgba(0,0,0,.4) 100%);mask-image:none}
 .mthumb::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(60% 60% at 50% 50%,#000,transparent)}
 .mthumb .num{position:absolute;left:12px;top:10px;font:500 11px var(--f-mono);letter-spacing:.12em;color:rgba(255,255,255,.75)}
 .mthumb .dur{position:absolute;right:10px;bottom:10px;font:500 10px var(--f-mono);padding:4px 8px;border-radius:99px;background:rgba(255,255,255,.14);color:#fff}
@@ -370,7 +372,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       <button class="dock-x" id="dockX" type="button" aria-label="Tancar el panell"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <ol class="mods" id="mods"></ol>
-    <p class="dock-foot"><span>6 vídeos</span><span>≈ 7,5 min en total</span></p>
+    <p class="dock-foot"><span>6 vídeos</span><span>≈ 7 min 50 s en total</span></p>
   </div>
 </aside>
 
@@ -417,21 +419,27 @@ if (!reduce) requestAnimationFrame(tick);
 
 /* ── Ruta: línia que es dibuixa amb el scroll ── */
 /* ── Mòduls (vídeos) ──
-   Quan un vídeo estigui llest, posa la ruta de l'arxiu a "src" (p. ex. "videos/v1.mp4"). */
+   Cada vídeo és a videos/vN.mp4 i la seva portada a videos/vN.jpg. */
 const MODS = [
-  { t: 'Benvinguda', h: 'Internet, <em>pas a pas</em>, per a tot el claustre', d: 46, sec: 'Introducció', src: '', r: '' },
-  { t: 'Què és Internet', h: 'Què és <em>Internet</em> i com viatja una pàgina web', d: 86, sec: 'Seccions 1 i 2', src: '', r: '' },
-  { t: 'Com ens connectem', h: 'De l\'<em>ADSL</em> a la fibra: com ens connectem', d: 80, sec: 'Secció 3', src: '', r: '' },
-  { t: 'Les xarxes del centre', h: 'Les <em>xarxes</em> del teu centre, peça a peça', d: 90, sec: 'Secció 3', src: '', r: '' },
-  { t: 'Cerca bé a Google', h: 'Troba-ho a la primera amb <em>Google</em>', d: 80, sec: 'Secció 4', src: '', r: '' },
-  { t: 'Unitats i xarxes privades', h: 'Bits, bytes, <em>intranet</em> i extranet', d: 70, sec: 'Seccions 2 i 3', src: '', r: '' }
+  { t: 'Benvinguda', h: 'Internet, <em>pas a pas</em>, per a tot el claustre', d: 46, sec: 'Introducció', src: 'videos/v0.mp4',
+    r: 'Fem servir Internet cada dia sense saber ben bé com funciona. Presentem el curs: què és Internet, com són les xarxes del centre i què hi aprendràs, pas a pas.' },
+  { t: 'Què és Internet', h: 'Què és <em>Internet</em> i com viatja una pàgina web', d: 91, sec: 'Seccions 1 i 2', src: 'videos/v1.mp4',
+    r: 'D\'on ve Internet, en què es diferencia de la Web i què passa des que escrius una adreça fins que veus la pàgina: servidors, DNS i adreces IP.' },
+  { t: 'Com ens connectem', h: 'De l\'<em>ADSL</em> a la fibra: com ens connectem', d: 82, sec: 'Secció 3', src: 'videos/v2.mp4',
+    r: 'De l\'ADSL a la fibra i el 5G: com arriba Internet a casa i al centre, i què diferencia cada tipus de connexió en velocitat i estabilitat.' },
+  { t: 'Les xarxes del centre', h: 'Les <em>xarxes</em> del teu centre, peça a peça', d: 93, sec: 'Secció 3', src: 'videos/v3.mp4',
+    r: 'Hub, switch, router i punts d\'accés: els aparells que formen la xarxa del centre, què fa cadascun i per què no tots funcionen igual.' },
+  { t: 'Cerca bé a Google', h: 'Troba-ho a la primera amb <em>Google</em>', d: 80, sec: 'Secció 4', src: 'videos/v4.mp4',
+    r: 'Operadors de cerca, com el signe menys per descartar resultats, per trobar el que busques en menys temps i saber si una font és fiable.' },
+  { t: 'Unitats i xarxes privades', h: 'Bits, bytes, <em>intranet</em> i extranet', d: 78, sec: 'Seccions 2 i 3', src: 'videos/v5.mp4',
+    r: 'De bits i bytes a KB, MB, GB i més enllà, i la diferència entre Internet, intranet i extranet en un centre educatiu.' }
 ];
 const fmt = s => s < 60 ? `${s} s` : `${Math.floor(s / 60)} min${s % 60 ? ' ' + (s % 60) + ' s' : ''}`;
 const nn = i => String(i).padStart(2, '0');
 const tl = document.getElementById('timeline');
 // Resum de cada vídeo: escriu el text a "r" dins de MODS
 tl.insertAdjacentHTML('beforeend', MODS.map((m, i) => `<button class="mcard" type="button" data-mod="${i}" aria-label="Mòdul ${nn(i)}: ${m.t}">
-  <span class="mthumb"><span class="num">MÒDUL ${nn(i)}</span><span class="play" aria-hidden="true"></span><span class="dur">${fmt(m.d)}</span></span>
+  <span class="mthumb"${m.src ? ` style="background-image:url(${m.src.replace('.mp4', '.jpg')})"` : ''}><span class="num">MÒDUL ${nn(i)}</span><span class="play" aria-hidden="true"></span><span class="dur">${fmt(m.d)}</span></span>
   <span class="minfo"><b>${m.t}</b><small>${m.sec} · ${m.src ? 'Disponible' : '<span class="st">Pendent de producció</span>'}</small></span></button>
 <article class="step" style="--x:${[.15, .7, .3, .85, .05, .55][i]}"><div class="n">${nn(i)}</div><h3>${m.t}</h3><p>${m.r}</p></article>`).join(''));
 const base = document.getElementById('tBase'), ink = document.getElementById('tInk');
@@ -546,7 +554,7 @@ function renderVideo(i) {
   const h = document.getElementById('vTitle'); h.innerHTML = m.h; wi = 0; splitWords(h);
   player.style.animation = 'none'; void player.offsetWidth; player.style.animation = '';
   if (m.src) {
-    player.innerHTML = `<video controls playsinline preload="metadata" src="${m.src}" aria-label="${m.t}"></video>`;
+    player.innerHTML = `<video controls playsinline preload="metadata" poster="${m.src.replace('.mp4', '.jpg')}" src="${m.src}" aria-label="${m.t}"></video>`;
   } else {
     player.innerHTML = `<div class="ph">
       <button class="bigplay" type="button" aria-label="Reproduir: ${m.t}"></button>
