@@ -11,7 +11,7 @@
 </head>
 <body>
 <style>
-/* Layout: una sola columna centrada, estil editorial gris clar; seqüència hero → graella de mòduls → ruta dibuixada amb scroll → tancament → onboarding per passos */
+/* Layout: una sola columna centrada, estil editorial gris clar; seqüència hero → mòduls (miniatures + corda dibuixada amb scroll) → tancament → onboarding per passos */
 :root{
   --bg:#ffffff;                /* blanc: fons principal */
   --soft:#f4f4f4;              /* grisos clars: jerarquia i separació */
@@ -60,9 +60,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .w{display:inline-block;animation:rise 1s var(--ease) both;animation-delay:calc(var(--i)*55ms + 150ms)}
 @keyframes rise{from{opacity:0;transform:translateY(18px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
 
-/* ───────── GRAELLA DE MÒDULS ───────── */
-.modgrid{list-style:none;max-width:1000px;margin:48px auto 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.modgrid li{animation:rise 1s var(--ease) both;animation-delay:calc(var(--i)*70ms + 600ms)}
+/* ───────── MÒDULS: miniatures (esquerra) + corda amb targetes (dreta) ───────── */
+.duo{max-width:1080px;margin-top:110px;margin-bottom:0;padding-block:80px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(28px,6vw,80px);row-gap:110px;align-items:center}
+.duo .mcard{grid-column:1;height:auto}
+.duo .step{grid-column:2;margin-bottom:0}
+.duo .step p:empty{min-height:4.65em}
 .mcard{width:100%;height:100%;display:flex;flex-direction:column;text-align:left;padding:8px;border-radius:20px;background:var(--surface);border:1px solid var(--soft-2);box-shadow:0 24px 50px -32px rgba(0,0,0,.35);transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
 .mcard:hover{transform:translateY(-4px);box-shadow:0 34px 60px -30px rgba(0,0,0,.42);border-color:#d6d6d6}
 .mthumb{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:radial-gradient(70% 90% at 50% 40%,#2a2a2a 0%,#0b0b0b 70%);display:grid;place-items:center}
@@ -89,7 +91,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @keyframes wheel{0%{opacity:0;transform:translateY(-2px)}30%{opacity:1}100%{opacity:0;transform:translateY(10px)}}
 
 /* ───────── RUTA (línia + targetes de vidre) ───────── */
-.timeline{position:relative;max-width:1000px;margin:120px auto 0;padding:140px 0 120px}
+.timeline{position:relative;margin-left:auto;margin-right:auto}
 .timeline svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
 .timeline .base{fill:none;stroke:var(--line);stroke-width:1.3}
 .timeline .ink{fill:none;stroke:var(--accent);stroke-width:1.8;stroke-linecap:round}
@@ -271,20 +273,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .vsl.swap{animation:swap .55s var(--ease) both}
 
 /* ───────── MÒBIL ───────── */
-@media (max-width:900px){
-  .modgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
 @media (max-width:640px){
   .arc{width:170%;margin-left:-35%}
   .arc text{font-size:20px}
-  .modgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:32px}
-  .mcard{padding:6px;border-radius:16px}
-  .mthumb{border-radius:11px}
-  .mthumb .play{width:36px;height:36px}
-  .mthumb .dur{display:none}
-  .minfo{padding:9px 5px 4px}
-  .minfo b{font-size:14px}
-  .timeline{margin-top:70px;padding-top:90px}
+  .duo{grid-template-columns:minmax(0,1fr);row-gap:14px;margin-top:60px;padding-block:20px}
+  .duo svg{display:none}
+  .duo .mcard,.duo .step{grid-column:1}
+  .duo .mcard:not(:first-of-type){margin-top:56px}
+  .duo .step{width:100%;margin-left:0;opacity:1;transform:none}
   .step{margin-bottom:120px;padding:22px}
   .step h3{font-size:24px}
   .closing{margin-top:110px}
@@ -344,37 +340,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <p data-split>pas a pas, sense tecnicismes</p>
   </section>
 
-  <!-- Graella de mòduls: cada targeta obre la seva pàgina de vídeo (VSL) -->
-  <section aria-label="Mòduls del curs">
-    <ol class="modgrid" id="modgrid"></ol>
-  </section>
 
   <div class="center" style="margin-top:28px"><button class="cta" data-go="ruta">Accedir a la plataforma</button></div>
   <div class="mouse" aria-hidden="true"></div>
 
-  <!-- Ruta de 4 seccions (temari de la presentació) -->
-  <section class="timeline" id="timeline" aria-label="Continguts">
+  <!-- Mòduls: a l'esquerra la miniatura de cada vídeo (obre el VSL), a la dreta la corda amb una targeta per vídeo -->
+  <section class="timeline duo" id="timeline" aria-label="Mòduls del curs">
     <svg aria-hidden="true"><path class="base" id="tBase"/><path class="ink" id="tInk"/></svg>
-    <article class="step" style="--x:.36">
-      <div class="n">01</div>
-      <h3>Què és Internet?</h3>
-      <p>La xarxa mundial que connecta dispositius. D'on ve, en què es diferencia de la Web i per què ens importa a l'aula.</p>
-    </article>
-    <article class="step" style="--x:.14">
-      <div class="n">02</div>
-      <h3>Com funciona Internet?</h3>
-      <p>Què passa des que escrius una adreça fins que veus la pàgina: servidors, DNS, adreces IP i protocols.</p>
-    </article>
-    <article class="step" style="--x:.62">
-      <div class="n">03</div>
-      <h3>Connexions i xarxes</h3>
-      <p>De l'ADSL a la fibra i el 5G, els aparells de la xarxa del centre i els tipus de xarxa que fem servir cada dia.</p>
-    </article>
-    <article class="step" style="--x:.44">
-      <div class="n">04</div>
-      <h3>Navegadors i cercadors</h3>
-      <p>Com trobar el que busques a Google en menys temps i com saber si una font és fiable.</p>
-    </article>
   </section>
 
   <section class="closing" aria-label="Tancament">
@@ -487,18 +459,36 @@ const tick = () => {
 if (!reduce) requestAnimationFrame(tick);
 
 /* ── Ruta: línia que es dibuixa amb el scroll ── */
+/* ── Mòduls (vídeos) ──
+   Quan un vídeo estigui llest, posa la ruta de l'arxiu a "src" (p. ex. "videos/v1.mp4"). */
+const MODS = [
+  { t: 'Benvinguda', h: 'Internet, <em>pas a pas</em>, per a tot el claustre', d: 46, sec: 'Introducció', src: '', r: '' },
+  { t: 'Què és Internet', h: 'Què és <em>Internet</em> i com viatja una pàgina web', d: 86, sec: 'Seccions 1 i 2', src: '', r: '' },
+  { t: 'Com ens connectem', h: 'De l\'<em>ADSL</em> a la fibra: com ens connectem', d: 80, sec: 'Secció 3', src: '', r: '' },
+  { t: 'Les xarxes del centre', h: 'Les <em>xarxes</em> del teu centre, peça a peça', d: 90, sec: 'Secció 3', src: '', r: '' },
+  { t: 'Cerca bé a Google', h: 'Troba-ho a la primera amb <em>Google</em>', d: 80, sec: 'Secció 4', src: '', r: '' },
+  { t: 'Unitats i xarxes privades', h: 'Bits, bytes, <em>intranet</em> i extranet', d: 70, sec: 'Seccions 2 i 3', src: '', r: '' }
+];
+const fmt = s => s < 60 ? `${s} s` : `${Math.floor(s / 60)} min${s % 60 ? ' ' + (s % 60) + ' s' : ''}`;
+const nn = i => String(i).padStart(2, '0');
 const tl = document.getElementById('timeline');
+// Resum de cada vídeo: escriu el text a "r" dins de MODS
+tl.insertAdjacentHTML('beforeend', MODS.map((m, i) => `<button class="mcard" type="button" data-mod="${i}" aria-label="Mòdul ${nn(i)}: ${m.t}">
+  <span class="mthumb"><span class="num">MÒDUL ${nn(i)}</span><span class="play" aria-hidden="true"></span><span class="dur">${fmt(m.d)}</span></span>
+  <span class="minfo"><b>${m.t}</b><small>${m.sec} · ${m.src ? 'Disponible' : '<span class="st">Pendent de producció</span>'}</small></span></button>
+<article class="step" style="--x:${[.15, .7, .3, .85, .05, .55][i]}"><div class="n">${nn(i)}</div><h3>${m.t}</h3><p>${m.r}</p></article>`).join(''));
 const base = document.getElementById('tBase'), ink = document.getElementById('tInk');
 const steps = [...tl.querySelectorAll('.step')];
 let L = 0, samples = [];
 function buildPath() {
   const W = tl.clientWidth, H = tl.clientHeight;
-  const pts = [[W * .58, 0]];
+  const pts = [[steps[0].offsetLeft + steps[0].offsetWidth / 2, 0]];
   steps.forEach((s, i) => {
     const cx = s.offsetLeft + s.offsetWidth * (i % 2 ? .38 : .62);
     pts.push([cx, s.offsetTop + s.offsetHeight / 2]);
   });
-  pts.push([W * .5, H]);
+  const last = steps[steps.length - 1];
+  pts.push([last.offsetLeft + last.offsetWidth / 2, H]);
   let d = `M${pts[0][0]},${pts[0][1]}`;
   for (let i = 1; i < pts.length; i++) {
     const [x0, y0] = pts[i - 1], [x1, y1] = pts[i], dy = (y1 - y0) * .55;
@@ -594,26 +584,11 @@ form.addEventListener('change', () => {
 });
 form.addEventListener('submit', e => { e.preventDefault(); if (ans[step] !== undefined) { step++; render(); } });
 
-/* ── Mòduls (vídeos) ──
-   Quan un vídeo estigui llest, posa la ruta de l'arxiu a "src" (p. ex. "videos/v1.mp4"). */
-const MODS = [
-  { t: 'Benvinguda', h: 'Internet, <em>pas a pas</em>, per a tot el claustre', d: 46, sec: 'Introducció', src: '' },
-  { t: 'Què és Internet', h: 'Què és <em>Internet</em> i com viatja una pàgina web', d: 86, sec: 'Seccions 1 i 2', src: '' },
-  { t: 'Com ens connectem', h: 'De l\'<em>ADSL</em> a la fibra: com ens connectem', d: 80, sec: 'Secció 3', src: '' },
-  { t: 'Les xarxes del centre', h: 'Les <em>xarxes</em> del teu centre, peça a peça', d: 90, sec: 'Secció 3', src: '' },
-  { t: 'Cerca bé a Google', h: 'Troba-ho a la primera amb <em>Google</em>', d: 80, sec: 'Secció 4', src: '' },
-  { t: 'Unitats i xarxes privades', h: 'Bits, bytes, <em>intranet</em> i extranet', d: 70, sec: 'Seccions 2 i 3', src: '' }
-];
-const fmt = s => s < 60 ? `${s} s` : `${Math.floor(s / 60)} min${s % 60 ? ' ' + (s % 60) + ' s' : ''}`;
-const nn = i => String(i).padStart(2, '0');
 const modsEl = document.getElementById('mods');
 modsEl.innerHTML = MODS.map((m, i) => `<li style="--i:${i}"><button class="mod" type="button" data-mod="${i}">
   <span class="mn">${nn(i)}</span>
   <span class="mt"><b>${m.t}</b><small>≈ ${fmt(m.d)} · ${m.src ? 'Disponible' : '<span class="st">Pendent de producció</span>'}</small></span>
   <span class="mplay" aria-hidden="true"></span></button></li>`).join('');
-document.getElementById('modgrid').innerHTML = MODS.map((m, i) => `<li style="--i:${i}"><button class="mcard" type="button" data-mod="${i}" aria-label="Mòdul ${nn(i)}: ${m.t}">
-  <span class="mthumb"><span class="num">MÒDUL ${nn(i)}</span><span class="play" aria-hidden="true"></span><span class="dur">${fmt(m.d)}</span></span>
-  <span class="minfo"><b>${m.t}</b><small>${m.sec} · ${m.src ? 'Disponible' : '<span class="st">Pendent de producció</span>'}</small></span></button></li>`).join('');
 
 /* ── Panell: s'obre en passar el cursor, en tocar o amb el teclat ── */
 const dock = document.getElementById('dock'), dockTab = document.getElementById('dockTab');
