@@ -61,9 +61,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @keyframes rise{from{opacity:0;transform:translateY(18px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
 
 /* ───────── MÒDULS: miniatures (esquerra) + corda amb targetes (dreta) ───────── */
-.duo{max-width:1080px;margin-top:110px;margin-bottom:0;padding-block:80px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(28px,6vw,80px);row-gap:110px;align-items:center}
+.duo{max-width:1240px;margin-top:36px;margin-bottom:0;padding-block:24px 90px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:clamp(28px,6vw,80px);row-gap:80px;align-items:center}
 .duo .mcard{grid-column:1;height:auto}
-.duo .step{grid-column:2;margin-bottom:0}
+.duo .step{--cw:min(500px,100%);grid-column:2;margin-bottom:0}
+.duo .step h3{font-size:clamp(26px,2.6vw,32px)}
+.duo .minfo b{font-size:clamp(17px,1.7vw,20px)}
+.duo .mthumb .play{width:56px;height:56px}
 .duo .step p:empty{min-height:4.65em}
 .mcard{width:100%;height:100%;display:flex;flex-direction:column;text-align:left;padding:8px;border-radius:20px;background:var(--surface);border:1px solid var(--soft-2);box-shadow:0 24px 50px -32px rgba(0,0,0,.35);transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
 .mcard:hover{transform:translateY(-4px);box-shadow:0 34px 60px -30px rgba(0,0,0,.42);border-color:#d6d6d6}
@@ -80,16 +83,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .minfo small{display:block;margin-top:5px;font-size:12px;color:var(--muted)}
 .minfo small .st{color:var(--gold);font-weight:500}
 
-/* ───────── CTA + RATOLÍ ───────── */
+/* ───────── CTA ───────── */
 .cta{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 26px;border-radius:99px;background:var(--accent);color:#fff;font:500 15px var(--f-display);letter-spacing:-.01em;box-shadow:0 10px 24px -12px rgba(192,0,0,.55);transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s}
 .cta:hover{background:var(--accent-hover);transform:translateY(-2px) scale(1.02);box-shadow:0 16px 30px -14px rgba(192,0,0,.6)}
 .cta:focus-visible{outline-color:var(--ink)}
 .cta:active{transform:scale(.98)}
 .center{display:flex;justify-content:center}
-.mouse{width:24px;height:38px;border:1.6px solid var(--ink);border-radius:14px;margin:26px auto 0;position:relative}
-.mouse::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:6px;margin-left:-1.5px;border-radius:2px;background:var(--ink);animation:wheel 1.8s var(--ease) infinite}
-@keyframes wheel{0%{opacity:0;transform:translateY(-2px)}30%{opacity:1}100%{opacity:0;transform:translateY(10px)}}
-
 /* ───────── RUTA (línia + targetes de vidre) ───────── */
 .timeline{position:relative;margin-left:auto;margin-right:auto}
 .timeline svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
@@ -111,25 +110,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .step h3{font:600 28px/1.12 var(--f-display);letter-spacing:-.03em;margin:8px 0 10px;text-wrap:balance}
 .step p{margin:0;color:var(--muted);font-size:15px;line-height:1.55}
 
-/* ───────── TANCAMENT ───────── */
-.closing{text-align:center;margin:180px auto 0;max-width:760px}
-.closing h2{font:600 clamp(34px,5.4vw,56px)/1.08 var(--f-display);letter-spacing:-.04em;margin:0;color:var(--ink-2)}
-.closing h2 span{opacity:.22;transition:opacity .4s linear}
-.closing h2 span.lit{opacity:1}
-
-/* ───────── NÚVOL DE DADES ───────── */
-.field{position:relative;max-width:1100px;height:520px;margin:30px auto 0}
-.chip,.orb{position:absolute;will-change:transform,filter}
-.chip{display:flex;align-items:baseline;gap:8px;background:#fff;border:1px solid var(--soft-2);border-radius:12px;padding:10px 14px;box-shadow:0 10px 30px -18px rgba(0,0,0,.3);white-space:nowrap}
-.chip b{font:600 22px var(--f-display);letter-spacing:-.03em}
-.chip small{font-size:12px;color:var(--muted)}
-.orb{width:38px;height:38px;border-radius:50%;background:var(--soft-2);display:grid;place-items:center;box-shadow:0 8px 20px -10px rgba(0,0,0,.35)}
-.orb.dark{background:#000;color:#fff}
-.orb.red{background:var(--accent);color:#fff}
-.orb svg{width:18px;height:18px}
-.float{animation:bob 7s ease-in-out infinite;animation-delay:var(--d,0s)}
-@keyframes bob{50%{translate:0 -10px}}
-.final{margin-top:20px;padding-bottom:90px}
+/* ───────── PEU ───────── */
 .foot{text-align:center;font:400 10px var(--f-mono);letter-spacing:.18em;color:#b2b2b0;text-transform:uppercase;padding-bottom:28px}
 
 /* ───────── VISTES ───────── */
@@ -276,17 +257,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (max-width:640px){
   .arc{width:170%;margin-left:-35%}
   .arc text{font-size:20px}
-  .duo{grid-template-columns:minmax(0,1fr);row-gap:14px;margin-top:60px;padding-block:20px}
+  .duo{grid-template-columns:minmax(0,1fr);row-gap:14px;margin-top:28px;padding-block:8px 56px}
   .duo svg{display:none}
   .duo .mcard,.duo .step{grid-column:1}
   .duo .mcard:not(:first-of-type){margin-top:56px}
   .duo .step{width:100%;margin-left:0;opacity:1;transform:none}
   .step{margin-bottom:120px;padding:22px}
   .step h3{font-size:24px}
-  .closing{margin-top:110px}
-  .field{height:440px}
-  .chip b{font-size:18px}
-  .hide-sm{display:none}
   .dock-tab{width:30px;right:0;padding-right:env(safe-area-inset-right,0px);border-radius:14px 0 0 14px;border-right:0}
   .dock-panel{background:rgba(255,255,255,.95)}
   .vhead .logo{height:32px}
@@ -306,7 +283,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .step{opacity:1;transform:none}
-  .closing h2 span{opacity:1}
 }
 </style>
 
@@ -342,31 +318,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 
   <div class="center" style="margin-top:28px"><button class="cta" data-go="ruta">Accedir a la plataforma</button></div>
-  <div class="mouse" aria-hidden="true"></div>
 
   <!-- Mòduls: a l'esquerra la miniatura de cada vídeo (obre el VSL), a la dreta la corda amb una targeta per vídeo -->
   <section class="timeline duo" id="timeline" aria-label="Mòduls del curs">
     <svg aria-hidden="true"><path class="base" id="tBase"/><path class="ink" id="tInk"/></svg>
   </section>
 
-  <section class="closing" aria-label="Tancament">
-    <h2 id="closing" data-words>Deixa d'improvisar<br>i entén la xarxa.</h2>
-  </section>
-
-  <div class="field" id="field" aria-hidden="true">
-    <div class="chip float" data-depth=".9" style="left:4%;top:12%;--d:-1s"><b>8</b><small>continguts obligatoris</small></div>
-    <div class="orb float" data-depth=".2" style="left:16%;top:46%;--d:-3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></div>
-    <div class="chip float" data-depth=".55" style="left:8%;top:70%;--d:-5s"><b>A–Z</b><small>glossari</small></div>
-    <div class="orb red float" data-depth=".1" style="left:56%;top:22%;--d:-2s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg></div>
-    <div class="chip float" data-depth=".05" style="left:60%;top:34%;--d:-4s"><b>+25</b><small>termes explicats</small></div>
-    <div class="orb dark float" data-depth=".15" style="left:46%;top:58%;--d:-6s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></div>
-    <div class="chip float" data-depth=".25" style="left:64%;top:58%;--d:-1.5s"><b>6</b><small>vídeos curts</small></div>
-    <div class="orb float hide-sm" data-depth=".8" style="left:88%;top:8%;--d:-2.5s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="14" width="18" height="6" rx="2"/><path d="M7 17h.01M11 17h.01M8 14l-2-6M16 14l2-6"/></svg></div>
-    <div class="chip float hide-sm" data-depth=".75" style="left:82%;top:30%;--d:-3.5s"><b>4</b><small>seccions</small></div>
-    <div class="chip float hide-sm" data-depth="1" style="left:30%;top:86%;--d:-4.5s"><b>0</b><small>registres necessaris</small></div>
-  </div>
-
-  <div class="center final"><button class="cta" data-go="ruta">Accedir a la plataforma</button></div>
   <p class="foot">Aula Digital · Projecte acadèmic · No és una web oficial</p>
 </main>
 
@@ -506,16 +463,6 @@ function lenAtY(y) {
   return L;
 }
 
-/* ── Paraules del tancament + profunditat del núvol ── */
-const closing = document.getElementById('closing');
-(() => {
-  const html = closing.innerHTML.split('<br>');
-  closing.innerHTML = html.map(line => line.split(' ').map(w => `<span>${w}</span>`).join(' ')).join('<br>');
-})();
-const words = [...closing.querySelectorAll('span')];
-const field = document.getElementById('field');
-const floaters = [...field.children];
-
 function onScroll() {
   const vh = innerHeight;
   // línia
@@ -524,21 +471,6 @@ function onScroll() {
   const drawn = reduce ? L : Math.max(0, lenAtY(y));
   ink.style.strokeDashoffset = L - drawn;
   steps.forEach(s => s.classList.toggle('on', reduce || y > s.offsetTop + 30));
-  // paraules
-  const cr = closing.getBoundingClientRect();
-  const p = Math.min(1, Math.max(0, (vh * .85 - cr.top) / (vh * .45)));
-  words.forEach((w, i) => w.classList.toggle('lit', reduce || p > i / words.length));
-  // núvol: paral·laxi + enfocament que es desplaça
-  const fr = field.getBoundingClientRect();
-  const fp = Math.min(1, Math.max(0, (vh - fr.top) / (vh + fr.height)));
-  const focus = 1 - fp; // primer enfoca el fons, després el primer pla
-  floaters.forEach(f => {
-    const d = +f.dataset.depth;
-    const blur = reduce ? 0 : Math.abs(d - focus) * 7;
-    f.style.filter = `blur(${blur.toFixed(2)}px)`;
-    f.style.opacity = (1 - Math.abs(d - focus) * .6).toFixed(2);
-    if (!reduce) f.style.transform = `translateY(${((fp - .5) * (1 - d) * -160).toFixed(1)}px)`;
-  });
 }
 let raf = 0;
 addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; onScroll(); }); }, { passive: true });
