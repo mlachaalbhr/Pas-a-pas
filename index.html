@@ -11,7 +11,7 @@
 </head>
 <body>
 <style>
-/* Layout: una sola columna centrada, estil editorial gris clar; seqüència hero → carrusel → ruta dibuixada amb scroll → tancament → onboarding per passos */
+/* Layout: una sola columna centrada, estil editorial gris clar; seqüència hero → graella de mòduls → ruta dibuixada amb scroll → tancament → onboarding per passos */
 :root{
   --bg:#ffffff;                /* blanc: fons principal */
   --soft:#f4f4f4;              /* grisos clars: jerarquia i separació */
@@ -60,56 +60,23 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .w{display:inline-block;animation:rise 1s var(--ease) both;animation-delay:calc(var(--i)*55ms + 150ms)}
 @keyframes rise{from{opacity:0;transform:translateY(18px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
 
-/* ───────── CARRUSEL 3D ───────── */
-.carousel{position:relative;max-width:900px;margin:44px auto 0;height:clamp(380px,52vw,480px);perspective:1400px;touch-action:pan-y;cursor:grab;user-select:none}
-.carousel:active{cursor:grabbing}
-.slide{
-  position:absolute;left:50%;top:0;width:clamp(250px,36vw,340px);height:100%;margin-left:calc(clamp(250px,36vw,340px) / -2);
-  border-radius:22px;overflow:hidden;background:var(--soft);
-  box-shadow:0 30px 60px -30px rgba(0,0,0,.35),0 0 0 1px rgba(0,0,0,.04);
-  transition:transform .8s var(--ease),filter .8s var(--ease),opacity .8s var(--ease);
-  transform-style:preserve-3d;will-change:transform
-}
-.slide[data-pos="0"]{transform:translateX(0) translateZ(0);z-index:3}
-.slide[data-pos="-1"]{transform:translateX(-62%) translateZ(-160px) rotateY(10deg);filter:grayscale(1) blur(1.5px);opacity:.75;z-index:2}
-.slide[data-pos="1"]{transform:translateX(62%) translateZ(-160px) rotateY(-10deg);filter:grayscale(1) blur(1.5px);opacity:.75;z-index:2}
-.slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,244,244,0) 38%,rgba(90,90,90,.5) 78%,rgba(20,20,20,.88));pointer-events:none}
-.slide .label{position:absolute;left:18px;bottom:16px;z-index:2;color:#fff;font:600 20px var(--f-display);letter-spacing:-.02em}
-.mock{position:absolute;inset:0;padding:14px;display:flex;flex-direction:column;gap:12px}
-.mnav{align-self:center;display:flex;gap:2px;background:#fff;border-radius:99px;padding:3px;box-shadow:0 1px 3px rgba(0,0,0,.08);font:500 10px var(--f-body)}
-.mnav span{padding:4px 9px;border-radius:99px;color:var(--muted)}
-.mnav span.on{background:var(--ink);color:#fff}
-/* mock: ruta */
-.route{position:relative;flex:1}
-.route svg{position:absolute;inset:0;width:100%;height:100%}
-.node{position:absolute;width:56%;background:#fff;border-radius:10px;padding:9px 10px;box-shadow:0 6px 16px -8px rgba(0,0,0,.25);font:600 11px/1.2 var(--f-body)}
-.node small{display:block;font:500 9px var(--f-mono);color:var(--muted);margin-bottom:3px}
-.node i{display:block;height:4px;border-radius:2px;background:#ececec;margin-top:7px;width:70%}
-/* mock: vídeos */
-.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.vcard{background:#fff;border-radius:9px;padding:5px;box-shadow:0 4px 12px -8px rgba(0,0,0,.3)}
-.vthumb{aspect-ratio:16/10;border-radius:6px;background:linear-gradient(135deg,#2a2a2a,#555);display:grid;place-items:center;max-width:100%}
-.vthumb b{width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center}
-.vthumb b::after{content:"";border-left:6px solid #222;border-top:4px solid transparent;border-bottom:4px solid transparent;margin-left:2px}
-.vcard p{margin:4px 2px 1px;font:600 9px/1.2 var(--f-body)}
-.vcard small{display:block;margin:0 2px;font:500 8px var(--f-mono);color:var(--accent)}
-/* mock: glossari */
-.gsearch{background:#fff;border-radius:9px;padding:8px 10px;font:500 10px var(--f-body);color:var(--muted);box-shadow:0 2px 6px rgba(0,0,0,.06)}
-.gletters{display:flex;flex-wrap:wrap;gap:4px}
-.gletters span{font:600 9px var(--f-mono);width:18px;height:18px;display:grid;place-items:center;border-radius:5px;background:#fff;color:var(--ink-2)}
-.gletters span.on{background:var(--ink);color:#fff}
-.glist{display:flex;flex-direction:column;gap:6px}
-.gitem{background:#fff;border-radius:9px;padding:8px 10px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
-.gitem b{font:600 11px var(--f-body)}
-.gitem i{display:block;height:4px;border-radius:2px;background:#ececec;margin-top:5px}
-
-.arrow{position:absolute;top:50%;z-index:5;width:40px;height:40px;margin-top:-20px;border-radius:50%;background:#fff;box-shadow:0 4px 14px -6px rgba(0,0,0,.25);display:grid;place-items:center;transition:transform .3s var(--ease)}
-.arrow:hover{transform:scale(1.08)}
-.arrow.prev{left:max(0px,calc(50% - 400px))}
-.arrow.next{right:max(0px,calc(50% - 400px))}
-.dots{display:flex;justify-content:center;gap:6px;margin-top:18px}
-.dots button{width:6px;height:6px;border-radius:99px;background:#c9c9c7;transition:width .5s var(--ease),background .5s}
-.dots button[aria-current="true"]{width:22px;background:var(--accent)}
+/* ───────── GRAELLA DE MÒDULS ───────── */
+.modgrid{list-style:none;max-width:1000px;margin:48px auto 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.modgrid li{animation:rise 1s var(--ease) both;animation-delay:calc(var(--i)*70ms + 600ms)}
+.mcard{width:100%;height:100%;display:flex;flex-direction:column;text-align:left;padding:8px;border-radius:20px;background:var(--surface);border:1px solid var(--soft-2);box-shadow:0 24px 50px -32px rgba(0,0,0,.35);transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
+.mcard:hover{transform:translateY(-4px);box-shadow:0 34px 60px -30px rgba(0,0,0,.42);border-color:#d6d6d6}
+.mthumb{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:radial-gradient(70% 90% at 50% 40%,#2a2a2a 0%,#0b0b0b 70%);display:grid;place-items:center}
+.mthumb::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:28px 28px;mask-image:radial-gradient(60% 60% at 50% 50%,#000,transparent)}
+.mthumb .num{position:absolute;left:12px;top:10px;font:500 11px var(--f-mono);letter-spacing:.12em;color:rgba(255,255,255,.75)}
+.mthumb .dur{position:absolute;right:10px;bottom:10px;font:500 10px var(--f-mono);padding:4px 8px;border-radius:99px;background:rgba(255,255,255,.14);color:#fff}
+.mthumb .play{position:relative;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);display:grid;place-items:center;transition:background .3s,transform .45s var(--ease)}
+.mthumb .play::after{content:"";border-left:13px solid var(--ink);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px;transition:border-color .3s}
+.mcard:hover .play{background:var(--accent);transform:scale(1.1)}
+.mcard:hover .play::after{border-left-color:#fff}
+.minfo{padding:12px 8px 6px}
+.minfo b{display:block;font:600 17px/1.2 var(--f-display);letter-spacing:-.02em}
+.minfo small{display:block;margin-top:5px;font-size:12px;color:var(--muted)}
+.minfo small .st{color:var(--gold);font-weight:500}
 
 /* ───────── CTA + RATOLÍ ───────── */
 .cta{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 26px;border-radius:99px;background:var(--accent);color:#fff;font:500 15px var(--f-display);letter-spacing:-.01em;box-shadow:0 10px 24px -12px rgba(192,0,0,.55);transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .35s}
@@ -304,12 +271,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .vsl.swap{animation:swap .55s var(--ease) both}
 
 /* ───────── MÒBIL ───────── */
+@media (max-width:900px){
+  .modgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media (max-width:640px){
   .arc{width:170%;margin-left:-35%}
   .arc text{font-size:20px}
-  .arrow{width:34px;height:34px;margin-top:-17px}
-  .slide[data-pos="-1"]{transform:translateX(-52%) translateZ(-200px) rotateY(8deg)}
-  .slide[data-pos="1"]{transform:translateX(52%) translateZ(-200px) rotateY(-8deg)}
+  .modgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:32px}
+  .mcard{padding:6px;border-radius:16px}
+  .mthumb{border-radius:11px}
+  .mthumb .play{width:36px;height:36px}
+  .mthumb .dur{display:none}
+  .minfo{padding:9px 5px 4px}
+  .minfo b{font-size:14px}
   .timeline{margin-top:70px;padding-top:90px}
   .step{margin-bottom:120px;padding:22px}
   .step h3{font-size:24px}
@@ -370,54 +344,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <p data-split>pas a pas, sense tecnicismes</p>
   </section>
 
-  <!-- Carrusel de pantalles -->
-  <section aria-roledescription="carrusel" aria-label="Pantalles de la plataforma">
-    <div class="carousel" id="carousel">
-      <article class="slide" data-pos="0" aria-label="Ruta">
-        <div class="mock">
-          <div class="mnav"><span>Inici</span><span class="on">Ruta</span><span>Vídeos</span><span>Glossari</span></div>
-          <div class="route">
-            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M70 0 C60 8 50 10 40 16 M45 30 C60 32 62 36 64 44 M60 58 C45 60 42 64 40 70 M45 82 C58 84 62 90 64 100" fill="none" stroke="#222" stroke-width=".5"/></svg>
-            <div class="node" style="left:4%;top:10%"><small>01</small>Què és Internet?<i></i></div>
-            <div class="node" style="right:4%;top:34%"><small>02</small>Com funciona<i></i></div>
-            <div class="node" style="left:4%;top:58%"><small>03</small>Connexions i xarxes<i></i></div>
-            <div class="node" style="right:4%;top:82%"><small>04</small>Navegadors i cercadors<i></i></div>
-          </div>
-        </div>
-        <span class="label">Ruta</span>
-      </article>
-      <article class="slide" data-pos="1" aria-label="Vídeos">
-        <div class="mock">
-          <div class="mnav"><span>Inici</span><span>Ruta</span><span class="on">Vídeos</span><span>Glossari</span></div>
-          <div class="vgrid">
-            <div class="vcard"><div class="vthumb"><b></b></div><p>Benvinguda</p><small>V0</small></div>
-            <div class="vcard"><div class="vthumb"><b></b></div><p>Què és Internet</p><small>V1</small></div>
-            <div class="vcard"><div class="vthumb"><b></b></div><p>Com ens connectem</p><small>V2</small></div>
-            <div class="vcard"><div class="vthumb"><b></b></div><p>Les xarxes del centre</p><small>V3</small></div>
-            <div class="vcard"><div class="vthumb"><b></b></div><p>Cerca bé a Google</p><small>V4</small></div>
-            <div class="vcard"><div class="vthumb"><b></b></div><p>Unitats i xarxes privades</p><small>V5</small></div>
-          </div>
-        </div>
-        <span class="label">Vídeos</span>
-      </article>
-      <article class="slide" data-pos="-1" aria-label="Glossari">
-        <div class="mock">
-          <div class="mnav"><span>Inici</span><span>Ruta</span><span>Vídeos</span><span class="on">Glossari</span></div>
-          <div class="gsearch">Cerca un terme…</div>
-          <div class="gletters"><span>A</span><span>B</span><span>D</span><span>E</span><span>F</span><span>H</span><span>I</span><span>L</span><span>M</span><span class="on">R</span><span>S</span><span>T</span><span>U</span><span>W</span></div>
-          <div class="glist">
-            <div class="gitem"><b>Router</b><i style="width:80%"></i></div>
-            <div class="gitem"><b>DNS</b><i style="width:65%"></i></div>
-            <div class="gitem"><b>Switch</b><i style="width:72%"></i></div>
-            <div class="gitem"><b>Intranet</b><i style="width:58%"></i></div>
-          </div>
-        </div>
-        <span class="label">Glossari</span>
-      </article>
-      <button class="arrow prev" id="prev" aria-label="Pantalla anterior"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <button class="arrow next" id="next" aria-label="Pantalla següent"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-    </div>
-    <div class="dots" id="dots"></div>
+  <!-- Graella de mòduls: cada targeta obre la seva pàgina de vídeo (VSL) -->
+  <section aria-label="Mòduls del curs">
+    <ol class="modgrid" id="modgrid"></ol>
   </section>
 
   <div class="center" style="margin-top:28px"><button class="cta" data-go="ruta">Accedir a la plataforma</button></div>
@@ -557,41 +486,6 @@ const tick = () => {
 };
 if (!reduce) requestAnimationFrame(tick);
 
-/* ── Carrusel 3D ── */
-const car = document.getElementById('carousel');
-const slides = [...car.querySelectorAll('.slide')];
-const dots = document.getElementById('dots');
-let active = 0;
-slides.forEach((s, i) => {
-  const b = document.createElement('button');
-  b.setAttribute('aria-label', 'Mostra ' + s.getAttribute('aria-label'));
-  b.onclick = () => go(i);
-  dots.append(b);
-});
-function go(i) {
-  const n = slides.length;
-  active = (i + n) % n;
-  slides.forEach((s, k) => {
-    let p = (k - active + n) % n; if (p > n / 2) p -= n;
-    s.dataset.pos = p;
-    s.setAttribute('aria-hidden', p !== 0);
-  });
-  [...dots.children].forEach((d, k) => d.setAttribute('aria-current', k === active));
-}
-go(0);
-document.getElementById('prev').onclick = () => go(active - 1);
-document.getElementById('next').onclick = () => go(active + 1);
-let sx = null;
-car.addEventListener('pointerdown', e => { if (e.target.closest('.arrow')) return; sx = e.clientX; });
-addEventListener('pointerup', e => {
-  if (sx === null) return;
-  const dx = e.clientX - sx; sx = null;
-  if (Math.abs(dx) > 40) go(active + (dx < 0 ? 1 : -1));
-  else { const s = e.target.closest('.slide'); if (s && s.dataset.pos !== '0') go(slides.indexOf(s)); }
-});
-car.tabIndex = 0;
-car.addEventListener('keydown', e => { if (e.key === 'ArrowRight') go(active + 1); if (e.key === 'ArrowLeft') go(active - 1); });
-
 /* ── Ruta: línia que es dibuixa amb el scroll ── */
 const tl = document.getElementById('timeline');
 const base = document.getElementById('tBase'), ink = document.getElementById('tInk');
@@ -717,6 +611,9 @@ modsEl.innerHTML = MODS.map((m, i) => `<li style="--i:${i}"><button class="mod" 
   <span class="mn">${nn(i)}</span>
   <span class="mt"><b>${m.t}</b><small>≈ ${fmt(m.d)} · ${m.src ? 'Disponible' : '<span class="st">Pendent de producció</span>'}</small></span>
   <span class="mplay" aria-hidden="true"></span></button></li>`).join('');
+document.getElementById('modgrid').innerHTML = MODS.map((m, i) => `<li style="--i:${i}"><button class="mcard" type="button" data-mod="${i}" aria-label="Mòdul ${nn(i)}: ${m.t}">
+  <span class="mthumb"><span class="num">MÒDUL ${nn(i)}</span><span class="play" aria-hidden="true"></span><span class="dur">${fmt(m.d)}</span></span>
+  <span class="minfo"><b>${m.t}</b><small>${m.sec} · ${m.src ? 'Disponible' : '<span class="st">Pendent de producció</span>'}</small></span></button></li>`).join('');
 
 /* ── Panell: s'obre en passar el cursor, en tocar o amb el teclat ── */
 const dock = document.getElementById('dock'), dockTab = document.getElementById('dockTab');
