@@ -422,17 +422,17 @@ if (!reduce) requestAnimationFrame(tick);
    Cada vídeo és a videos/vN.mp4 i la seva portada a videos/vN.jpg. */
 const MODS = [
   { t: 'Benvinguda', h: 'Internet, <em>pas a pas</em>, per a tot el claustre', d: 46, sec: 'Introducció', src: 'videos/v0.mp4',
-    r: 'Fem servir Internet cada dia sense saber ben bé com funciona. Presentem el curs: què és Internet, com són les xarxes del centre i què hi aprendràs, pas a pas.' },
+    r: 'Que el campus virtual no s\'obre i no saps per què? Aquesta guia et dona respostes clares i curtes, sense tecnicismes: quatre seccions i un glossari de la A a la Z perquè trobis la solució i continuïs amb la classe.' },
   { t: 'Què és Internet', h: 'Què és <em>Internet</em> i com viatja una pàgina web', d: 91, sec: 'Seccions 1 i 2', src: 'videos/v1.mp4',
-    r: 'D\'on ve Internet, en què es diferencia de la Web i què passa des que escrius una adreça fins que veus la pàgina: servidors, DNS i adreces IP.' },
+    r: 'Descobreix què passa des que escrius una adreça fins que apareix la pàgina: què és internet, una xarxa de xarxes, en què es diferencia de la web i com el DNS, la IP i el TCP fan arribar cada paquet al seu lloc.' },
   { t: 'Com ens connectem', h: 'De l\'<em>ADSL</em> a la fibra: com ens connectem', d: 82, sec: 'Secció 3', src: 'videos/v2.mp4',
-    r: 'De l\'ADSL a la fibra i el 5G: com arriba Internet a casa i al centre, i què diferencia cada tipus de connexió en velocitat i estabilitat.' },
+    r: 'Del mòdem telefònic a la fibra òptica, passant per l\'ADSL, el 5G i el satèl·lit: un recorregut per les maneres de connectar-nos. I un truc per no confondre megabits amb megabytes quan mires la velocitat.' },
   { t: 'Les xarxes del centre', h: 'Les <em>xarxes</em> del teu centre, peça a peça', d: 93, sec: 'Secció 3', src: 'videos/v3.mp4',
-    r: 'Hub, switch, router i punts d\'accés: els aparells que formen la xarxa del centre, què fa cadascun i per què no tots funcionen igual.' },
+    r: 'Què hi ha darrere del wifi del centre? Coneixeràs la feina de cada aparell (switch, router, servidor) i els tipus de xarxa segons l\'abast i la forma, per saber què mirar quan alguna cosa falla.' },
   { t: 'Cerca bé a Google', h: 'Troba-ho a la primera amb <em>Google</em>', d: 80, sec: 'Secció 4', src: 'videos/v4.mp4',
-    r: 'Operadors de cerca, com el signe menys per descartar resultats, per trobar el que busques en menys temps i saber si una font és fiable.' },
+    r: 'Trucs per trobar a la primera el recurs que necessites: cometes, guió, site i filetype, la cerca avançada i Google com a calculadora. I un consell clau: comprova sempre qui ha publicat la font.' },
   { t: 'Unitats i xarxes privades', h: 'Bits, bytes, <em>intranet</em> i extranet', d: 78, sec: 'Seccions 2 i 3', src: 'videos/v5.mp4',
-    r: 'De bits i bytes a KB, MB, GB i més enllà, i la diferència entre Internet, intranet i extranet en un centre educatiu.' }
+    r: 'Del bit al zettabyte: entén quant ocupa cada cosa i per què un disc d\'1 TB en mostra uns 931 GB. I la diferència entre internet, la intranet del centre i l\'extranet per a convidats.' }
 ];
 const fmt = s => s < 60 ? `${s} s` : `${Math.floor(s / 60)} min${s % 60 ? ' ' + (s % 60) + ' s' : ''}`;
 const nn = i => String(i).padStart(2, '0');
