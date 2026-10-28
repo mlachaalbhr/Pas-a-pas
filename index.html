@@ -255,6 +255,65 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .vsl.out{opacity:0;filter:blur(8px)}
 .vsl.swap{animation:swap .55s var(--ease) both}
 
+/* ───────── VSL: descripció ───────── */
+.vdesc{width:100%;max-width:760px;margin:clamp(36px,6vh,56px) auto 0;text-align:left;animation:playerIn 1.1s var(--ease) both .4s}
+.vdesc h2{font:600 clamp(24px,3vw,32px)/1.15 var(--f-display);letter-spacing:-.03em;margin:8px 0 14px}
+.vdesc h2 em{font:italic 500 1.06em var(--f-serif)}
+.vdesc p{margin:0;font-size:17px;line-height:1.7;color:var(--ink-2)}
+.vdesc .cta{margin-top:28px}
+
+/* ───────── AVALUA'T ───────── */
+#tests{min-height:100vh;display:flex;flex-direction:column;padding-block:18px 28px;background:radial-gradient(1000px 600px at 10% 100%,#efefef 0%,transparent 60%),var(--bg)}
+.tz{flex:1;width:100%;max-width:1080px;margin:0 auto;padding-top:clamp(32px,6vh,60px)}
+.thead{text-align:center;max-width:720px;margin:0 auto}
+.thead h1{font:600 clamp(34px,5vw,56px)/1.05 var(--f-display);letter-spacing:-.045em;margin:12px 0 0;text-wrap:balance}
+.thead h1 em{font:italic 500 1.06em/1 var(--f-serif);letter-spacing:-.025em}
+.tsub{margin:14px auto 0;font-size:17px;color:var(--muted);max-width:520px}
+.tgrid{list-style:none;padding:0;margin:44px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.tgrid li{animation:rise .9s var(--ease) both;animation-delay:calc(var(--i)*60ms + 100ms)}
+.tcard{width:100%;height:100%;display:flex;flex-direction:column;text-align:left;padding:8px;border-radius:20px;background:var(--surface);border:1px solid var(--soft-2);box-shadow:0 24px 50px -32px rgba(0,0,0,.35);transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
+.tcard:hover{transform:translateY(-4px);box-shadow:0 34px 60px -30px rgba(0,0,0,.42);border-color:#d6d6d6}
+.tthumb{position:relative;aspect-ratio:16/8;border-radius:14px;overflow:hidden;background:#222 center/cover no-repeat}
+.tthumb::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,0) 45%)}
+.tthumb .num{position:absolute;left:12px;top:10px;font:500 11px var(--f-mono);letter-spacing:.12em;color:#fff}
+.tbody{padding:14px 8px 0;flex:1}
+.tbody b{display:block;font:600 18px/1.2 var(--f-display);letter-spacing:-.02em}
+.tbody small{display:block;margin-top:4px;font-size:12px;color:var(--muted)}
+.tfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 8px 6px}
+.tstat{font:500 11px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:99px;background:var(--soft);color:var(--gold)}
+.tcard.done .tstat{background:var(--ink);color:#fff}
+.tgo{font:500 13px var(--f-display);color:var(--accent)}
+.tfinal{margin:36px auto 0;max-width:640px;text-align:center;padding:28px 26px;border-radius:24px;background:var(--surface);border:1px solid var(--soft-2);box-shadow:0 30px 60px -30px rgba(0,0,0,.25)}
+.tfinal .track{margin:14px auto 0;max-width:360px}
+.tfinal p{margin:8px 0 0;color:var(--muted);font-size:14px}
+.tfinal .big{font:600 clamp(56px,9vw,88px)/1 var(--f-display);letter-spacing:-.05em;margin:10px 0 0;color:var(--ink)}
+.tfinal .big small,.qres .big small{font-size:.32em;color:var(--muted);letter-spacing:-.01em}
+.ghost{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:0 22px;border-radius:99px;border:1px solid var(--line);font:500 14px var(--f-display);transition:background .25s,border-color .25s}
+.ghost:hover{background:var(--soft);border-color:#c9c9c9}
+.tfinal .ghost{margin-top:18px}
+.quiz{width:min(560px,100%);margin:0 auto}
+.qtop{display:flex;align-items:center;justify-content:space-between;font-size:13px;color:var(--muted)}
+.qtop button{font-size:13px;color:var(--muted)}
+.qtop button:hover{color:var(--ink)}
+.quiz .card legend small{display:block;font:500 11px var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.quiz .card legend{margin-bottom:12px}
+.quiz .opt span.ok{border-color:#1d7a46;background:#eef7f1}
+.quiz .opt span.ok::after{border:5px solid #1d7a46}
+.quiz .opt span.ko{border-color:var(--accent);background:#fdf1f1}
+.quiz .opt span.ko::after{border:5px solid var(--accent)}
+.qfb{margin:14px 0 0;font-size:14px;font-weight:500;min-height:1.5em}
+.qfb.ok{color:#1d7a46}
+.qfb.ko{color:var(--accent)}
+.qres{text-align:center}
+.qres .big{font:600 clamp(64px,10vw,96px)/1 var(--f-display);letter-spacing:-.05em;margin:14px 0 4px}
+.qres .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.qres .row .cta{width:auto;margin:0}
+.dock-cta{display:flex;justify-content:center;margin:16px 0 4px}
+
+@media (max-width:900px){
+  .tgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 /* ───────── MÒBIL ───────── */
 @media (max-width:640px){
   .arc{width:170%;margin-left:-35%}
@@ -278,6 +337,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .vhead .sep{display:none}
   .vback span{display:none}
   .player{border-radius:16px}
+  .tgrid{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:30px}
+  .vdesc p{font-size:16px}
   .bigplay{width:64px;height:64px}
   .ph-cap{left:14px;right:14px;bottom:14px}
   .ph-cap div span{display:none}
@@ -319,7 +380,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   </section>
 
 
-  <div class="center" style="margin-top:28px"><button class="cta" data-go="ruta">Accedir a la plataforma</button></div>
+  <div class="center" style="margin-top:28px"><button class="cta" data-go="tests">Avalua't</button></div>
 
   <!-- Mòduls: a l'esquerra la miniatura de cada vídeo (obre el VSL), a la dreta la corda amb una targeta per vídeo -->
   <section class="timeline duo" id="timeline" aria-label="Mòduls del curs">
@@ -355,8 +416,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <p class="eyebrow" id="vEyebrow"></p>
     <h1 id="vTitle"></h1>
     <div class="player" id="player"></div>
+    <div class="vdesc" id="vDesc"></div>
   </section>
   <p class="foot" style="margin-top:40px">Aula Digital · Projecte acadèmic · No és una web oficial</p>
+</main>
+
+<!-- ═════════════ VISTA 4 · AVALUA'T (tests per vídeo) ═════════════ -->
+<main id="tests" class="view wrap" hidden>
+  <header class="vhead">
+    <div class="vhead-l">
+      <span class="brand"><span class="logo" role="img" aria-label="Generalitat de Catalunya"></span><span class="bsep" aria-hidden="true"></span><span class="brand-name bname">Internet <span class="pas">pas</span> a <span class="pas">pas</span></span></span>
+    </div>
+    <button class="vback" type="button" data-go="landing" aria-label="Tornar a l'inici">←<span> Tornar a l'inici</span></button>
+  </header>
+  <section class="tz" id="tz" aria-live="polite"></section>
+  <p class="foot" style="margin-top:40px">Aula Digital · Les teves notes només es guarden en aquest navegador</p>
 </main>
 
 <!-- ═════════════ PANELL DE MÒDULS ═════════════ -->
@@ -373,6 +447,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </div>
     <ol class="mods" id="mods"></ol>
     <p class="dock-foot"><span>6 vídeos</span><span>≈ 7 min 50 s en total</span></p>
+    <div class="dock-cta"><button class="cta" type="button" data-go="tests">Avalua't</button></div>
   </div>
 </aside>
 
@@ -422,17 +497,23 @@ if (!reduce) requestAnimationFrame(tick);
    Cada vídeo és a videos/vN.mp4 i la seva portada a videos/vN.jpg. */
 const MODS = [
   { t: 'Benvinguda', h: 'Internet, <em>pas a pas</em>, per a tot el claustre', d: 46, sec: 'Introducció', src: 'videos/v0.mp4',
-    r: 'Que el campus virtual no s\'obre i no saps per què? Aquesta guia et dona respostes clares i curtes, sense tecnicismes: quatre seccions i un glossari de la A a la Z perquè trobis la solució i continuïs amb la classe.' },
+    r: 'Que el campus virtual no s\'obre i no saps per què? Aquesta guia et dona respostes clares i curtes, sense tecnicismes: quatre seccions i un glossari de la A a la Z perquè trobis la solució i continuïs amb la classe.',
+    x: "Aquest vídeo de benvinguda presenta Internet pas a pas, una guia pensada per al professorat que fa servir la tecnologia cada dia però no sempre sap què passa quan alguna cosa falla. Parteix d'una situació molt habitual: el campus virtual no s'obre i no saps per què. La idea central és que no ets l'única persona a qui li passa i que gairebé sempre hi ha una solució. A la plataforma pots escriure el teu dubte al cercador i trobar una resposta clara i curta, sense paraules rares ni manuals eterns. El contingut s'organitza en quatre seccions: què és internet, com funciona, les xarxes i les connexions, i com cercar bé a Google. A més, hi ha un glossari de la A a la Z on cada fitxa explica què és un concepte, per a què serveix, un exemple de l'escola i l'error més habitual. L'objectiu és senzill: cercar, entendre-ho i continuar amb la classe." },
   { t: 'Què és Internet', h: 'Què és <em>Internet</em> i com viatja una pàgina web', d: 91, sec: 'Seccions 1 i 2', src: 'videos/v1.mp4',
-    r: 'Descobreix què passa des que escrius una adreça fins que apareix la pàgina: què és internet, una xarxa de xarxes, en què es diferencia de la web i com el DNS, la IP i el TCP fan arribar cada paquet al seu lloc.' },
+    r: 'Descobreix què passa des que escrius una adreça fins que apareix la pàgina: què és internet, una xarxa de xarxes, en què es diferencia de la web i com el DNS, la IP i el TCP fan arribar cada paquet al seu lloc.',
+    x: "Aquest vídeo explica què passa durant el segon que tarda a aparèixer una pàgina, com el campus virtual del centre. Primer defineix internet com una xarxa de xarxes: la de l'escola, la de casa, la de la ciutat i moltes més, connectades arreu del món. Fa un breu repàs històric: el 1969 dos ordinadors de Califòrnia es van enviar el primer missatge i el 1983 va arribar el TCP/IP, l'idioma comú de les xarxes. També aclareix una confusió freqüent: internet i la web no són el mateix, perquè la web només n'és una part, com ho són el correu o les videotrucades. Després segueix el viatge d'una pàgina: la URL indica el servidor i la pàgina concreta, el DNS tradueix el nom en una adreça IP, la pàgina es divideix en paquets que poden viatjar per camins diferents i, en arribar, el TCP els ordena, demana de nou els que han fallat i torna a muntar la pàgina sencera." },
   { t: 'Com ens connectem', h: 'De l\'<em>ADSL</em> a la fibra: com ens connectem', d: 82, sec: 'Secció 3', src: 'videos/v2.mp4',
-    r: 'Del mòdem telefònic a la fibra òptica, passant per l\'ADSL, el 5G i el satèl·lit: un recorregut per les maneres de connectar-nos. I un truc per no confondre megabits amb megabytes quan mires la velocitat.' },
+    r: 'Del mòdem telefònic a la fibra òptica, passant per l\'ADSL, el 5G i el satèl·lit: un recorregut per les maneres de connectar-nos. I un truc per no confondre megabits amb megabytes quan mires la velocitat.',
+    x: "Aquest vídeo fa un recorregut per les diferents maneres de connectar-nos a internet i com han evolucionat. Comença pel mòdem telefònic, que anava a uns 56 kilobits per segon i ocupava la línia mentre navegaves. Després arriba l'ADSL, també per cable de coure, que ja permetia navegar i parlar alhora, tot i que la velocitat baixava com més lluny eres de la central. El cable híbrid combina fibra i coaxial per guanyar velocitat, i la fibra òptica, que envia llum per un fil molt fi, pot arribar a un gigabit per segon fins a casa o l'escola. El vídeo aclareix que el wifi és només l'últim tram sense cables fins al router. També explica la connexió mòbil, del 2G al 5G, i el satèl·lit per als llocs on no arriba el cable. Acaba amb un consell pràctic: un byte són 8 bits, així que 200 megabits per segon equivalen a uns 25 megabytes per segon." },
   { t: 'Les xarxes del centre', h: 'Les <em>xarxes</em> del teu centre, peça a peça', d: 93, sec: 'Secció 3', src: 'videos/v3.mp4',
-    r: 'Què hi ha darrere del wifi del centre? Coneixeràs la feina de cada aparell (switch, router, servidor) i els tipus de xarxa segons l\'abast i la forma, per saber què mirar quan alguna cosa falla.' },
+    r: 'Què hi ha darrere del wifi del centre? Coneixeràs la feina de cada aparell (switch, router, servidor) i els tipus de xarxa segons l\'abast i la forma, per saber què mirar quan alguna cosa falla.',
+    x: "Aquest vídeo mostra què hi ha darrere del wifi del centre i quina feina fa cada aparell, perquè sàpigues què mirar quan alguna cosa falla. L'ordinador és l'estació de treball i es connecta a la xarxa amb la targeta de xarxa o NIC, mentre que el servidor ofereix serveis a la resta d'equips. Compara el hub, que repeteix les dades a tots els ports, amb el switch, que llegeix l'adreça MAC i les envia només al destinatari. El router connecta la xarxa del centre amb altres xarxes, com internet, a partir de les adreces IP. Després classifica les xarxes segons l'abast: PAN, LAN, MAN i WAN, amb internet com la xarxa d'àrea extensa més gran. També distingeix entre xarxes client-servidor i d'igual a igual, i presenta les topologies de bus, anella i estrella, la més habitual, on el switch central és el punt crític: si falla, cau tota la xarxa." },
   { t: 'Cerca bé a Google', h: 'Troba-ho a la primera amb <em>Google</em>', d: 80, sec: 'Secció 4', src: 'videos/v4.mp4',
-    r: 'Trucs per trobar a la primera el recurs que necessites: cometes, guió, site i filetype, la cerca avançada i Google com a calculadora. I un consell clau: comprova sempre qui ha publicat la font.' },
+    r: 'Trucs per trobar a la primera el recurs que necessites: cometes, guió, site i filetype, la cerca avançada i Google com a calculadora. I un consell clau: comprova sempre qui ha publicat la font.',
+    x: "Aquest vídeo ensenya a trobar ràpidament a Google el recurs que necessites per a la classe, en lloc de perdre't entre una allau de resultats. Presenta els operadors de cerca més útils: les cometes, per buscar una frase exacta; el guió, per excloure una paraula, com a jaguar -cotxe; site:, per buscar només dins d'un web concret, com el de la XTEC, sense deixar cap espai després dels dos punts; i filetype:pdf, per veure només fitxers PDF. També mostra que es poden combinar operadors per afinar encara més la cerca. Per a qui no vulgui memoritzar res, explica la cerca avançada, un formulari amb caselles per a frases exactes, paraules excloses, web, tipus de fitxer i data. A més, recorda que Google fa de calculadora i de convertidor d'unitats i divises. Acaba amb un consell clau: si dubtes d'una font, comprova sempre qui l'ha publicada." },
   { t: 'Unitats i xarxes privades', h: 'Bits, bytes, <em>intranet</em> i extranet', d: 78, sec: 'Seccions 2 i 3', src: 'videos/v5.mp4',
-    r: 'Del bit al zettabyte: entén quant ocupa cada cosa i per què un disc d\'1 TB en mostra uns 931 GB. I la diferència entre internet, la intranet del centre i l\'extranet per a convidats.' }
+    r: 'Del bit al zettabyte: entén quant ocupa cada cosa i per què un disc d\'1 TB en mostra uns 931 GB. I la diferència entre internet, la intranet del centre i l\'extranet per a convidats.',
+    x: "Aquest vídeo explica les unitats amb què mesurem la informació i la diferència entre els tipus de xarxa privada. El bit és la unitat més petita, un 0 o un 1, i vuit bits formen un byte, suficient per guardar una lletra. A partir d'aquí vénen els múltiples: kilobyte, megabyte, gigabyte, terabyte, petabyte, exabyte i zettabyte, cadascun mil vegades més gran, o 1.024 segons el sistema. Amb exemples quotidians, com una foto del mòbil, un vídeo curt o el disc d'un servidor del centre, ajuda a fer-se una idea de les mides. També aclareix per què un disc d'1 terabyte apareix com uns 931 gigabytes: els fabricants compten de 1.000 en 1.000 i el sistema, de 1.024 en 1.024. Finalment compara internet, oberta a tothom, amb la intranet, la xarxa privada del centre, i l'extranet, que dona accés controlat a certes persones de fora." }
 ];
 const fmt = s => s < 60 ? `${s} s` : `${Math.floor(s / 60)} min${s % 60 ? ' ' + (s % 60) + ' s' : ''}`;
 const nn = i => String(i).padStart(2, '0');
@@ -566,6 +647,8 @@ function renderVideo(i) {
       setTimeout(() => msg.classList.remove('show'), 2600);
     };
   }
+  document.getElementById('vDesc').innerHTML = `<span class="eyebrow">Sobre aquest vídeo</span><h2>De què tracta aquest <em>vídeo</em></h2><p>${m.x}</p>
+    <button class="cta" type="button" data-test="${i}">Avalua't: test del mòdul ${nn(i)}</button>`;
   modsEl.querySelectorAll('.mod').forEach(b => b.setAttribute('aria-current', +b.dataset.mod === i));
   document.title = `${m.t} · Aula Digital`;
 }
@@ -577,8 +660,115 @@ function openModule(i) {
   } else show('video', () => renderVideo(i));
 }
 
+/* ── Avalua't: un test per vídeo i nota mitjana final ──
+   Cada pregunta: q (enunciat), o (opcions), a (índex de la correcta). */
+const QZ = [
+  [
+    { q: "Quantes seccions té la guia Internet pas a pas?", o: ["Dues", "Tres", "Quatre", "Sis"], a: 2 },
+    { q: "Com trobes la resposta a un dubte a la plataforma?", o: ["Escrivint-lo al cercador", "Trucant al servei tècnic", "Llegint el manual sencer", "Enviant un correu al centre"], a: 0 },
+    { q: "Quina d'aquestes NO és una de les seccions de la guia?", o: ["Què és internet", "Com cercar bé a Google", "Les xarxes i les connexions", "Programació de pàgines web"], a: 3 },
+    { q: "Què explica cada fitxa del glossari?", o: ["Només la definició del terme", "Què és, per a què serveix, un exemple de l'escola i l'error més habitual", "La història del terme", "Un exercici per fer a classe"], a: 1 },
+    { q: "Quin és l'objectiu de la guia?", o: ["Substituir el servei tècnic", "Aprendre a programar", "Cercar, entendre-ho i continuar amb la classe", "Configurar el router del centre"], a: 2 }
+  ],
+  [
+    { q: "Què és internet?", o: ["Un programa per navegar", "Una xarxa de xarxes connectades arreu del món", "El mateix que la web", "Un servidor de Califòrnia"], a: 1 },
+    { q: "En quin any es van enviar el primer missatge dos ordinadors de Califòrnia?", o: ["1969", "1983", "1991", "2001"], a: 0 },
+    { q: "Internet i la web són el mateix?", o: ["Sí, són sinònims", "No: la web és només una part d'internet", "No: internet és una part de la web", "Només ho són al centre"], a: 1 },
+    { q: "Què fa el DNS?", o: ["Divideix la pàgina en paquets", "Protegeix l'ordinador de virus", "Tradueix el nom de la pàgina en una adreça IP", "Accelera la connexió wifi"], a: 2 },
+    { q: "Què fa el TCP quan arriben els paquets?", o: ["Els esborra per estalviar espai", "Els envia a un altre servidor", "Els converteix en una adreça IP", "Els ordena, demana els que han fallat i munta la pàgina"], a: 3 }
+  ],
+  [
+    { q: "A quina velocitat anaven els primers mòdems telefònics?", o: ["Uns 56 kilobits per segon", "Uns 200 megabits per segon", "Un gigabit per segon", "Uns 25 megabytes per segon"], a: 0 },
+    { q: "Què permetia l'ADSL que no permetia el mòdem?", o: ["Connectar-se per satèl·lit", "Navegar i parlar per telèfon alhora", "Arribar a un gigabit per segon", "Connectar-se sense cables"], a: 1 },
+    { q: "Com envia les dades la fibra òptica?", o: ["Per ones de ràdio", "Pel cable de coure del telèfon", "Amb llum, per un fil molt fi", "A través d'un satèl·lit"], a: 2 },
+    { q: "Què és el wifi?", o: ["Tota la connexió fins a internet", "Un tipus de fibra òptica", "Una connexió mòbil 5G", "L'últim tram sense cables fins al router"], a: 3 },
+    { q: "Una connexió de 200 megabits per segon descarrega uns…", o: ["25 megabytes per segon", "200 megabytes per segon", "1.600 megabytes per segon", "8 megabytes per segon"], a: 0 }
+  ],
+  [
+    { q: "Amb quina peça es connecta l'ordinador a la xarxa?", o: ["Amb el DNS", "Amb la targeta de xarxa (NIC)", "Amb el servidor", "Amb el navegador"], a: 1 },
+    { q: "Quina diferència hi ha entre un hub i un switch?", o: ["Cap, fan el mateix", "El hub llegeix l'adreça MAC", "El switch envia les dades només a l'aparell destinatari", "El switch repeteix les dades a tots els ports"], a: 2 },
+    { q: "Què fa el router?", o: ["Connecta la xarxa del centre amb altres xarxes, com internet", "Guarda els fitxers del professorat", "Dona corrent als ordinadors", "Converteix bits en bytes"], a: 0 },
+    { q: "Quin tipus de xarxa és la de l'escola, segons l'abast?", o: ["PAN", "MAN", "WAN", "LAN"], a: 3 },
+    { q: "En una topologia en estrella, què passa si falla el switch central?", o: ["Només cau un equip", "No passa res", "Cau tota la xarxa", "La xarxa va més ràpida"], a: 2 }
+  ],
+  [
+    { q: "Per a què serveixen les cometes en una cerca?", o: ["Per excloure una paraula", "Per buscar exactament aquella frase", "Per buscar dins d'un web concret", "Per veure només fitxers PDF"], a: 1 },
+    { q: "Què mostra la cerca jaguar -cotxe?", o: ["L'animal, i no el cotxe", "Només cotxes de la marca", "Pàgines del web jaguar", "Imatges de cotxes i animals"], a: 0 },
+    { q: "Què fa l'operador site: seguit del nom d'un web?", o: ["Exclou aquell web dels resultats", "Mostra només fitxers d'aquell web en PDF", "Ordena els resultats per data", "Busca només dins d'aquell web"], a: 3 },
+    { q: "Què escriuries per veure només fitxers PDF?", o: ["site:pdf", "\"pdf\"", "filetype:pdf", "-pdf"], a: 2 },
+    { q: "Si dubtes d'una font, què has de fer?", o: ["Comprovar qui l'ha publicada", "Fer servir el primer resultat", "Compartir-la per si de cas", "Buscar-la entre cometes"], a: 0 }
+  ],
+  [
+    { q: "Quants bits formen un byte?", o: ["2", "8", "10", "1.024"], a: 1 },
+    { q: "Quin és l'ordre correcte, de més petit a més gran?", o: ["GB, MB, KB, TB", "MB, KB, TB, GB", "TB, GB, MB, KB", "KB, MB, GB, TB"], a: 3 },
+    { q: "Per què un disc d'1 terabyte es mostra com uns 931 gigabytes?", o: ["Perquè el disc està mig ple", "Perquè els fabricants compten de 1.000 en 1.000 i el sistema de 1.024 en 1.024", "Perquè té un virus", "Perquè el sistema operatiu ocupa la resta"], a: 1 },
+    { q: "Què és la intranet?", o: ["La xarxa privada del centre", "Internet a l'escola", "Una xarxa oberta a tothom", "Un tipus de cable de xarxa"], a: 0 },
+    { q: "Què és l'extranet?", o: ["Una xarxa oberta a tothom", "La wifi dels convidats", "Com la intranet, però deixa entrar certes persones de fora amb accés controlat", "Una xarxa d'àrea extensa"], a: 2 }
+  ]
+];
+const tz = document.getElementById('tz');
+const SK = 'aula-digital-notes';
+let scores = {};
+try { scores = JSON.parse(localStorage.getItem(SK)) || {}; } catch (e) {}
+const saveScores = () => { try { localStorage.setItem(SK, JSON.stringify(scores)); } catch (e) {} };
+const nota = n => (Math.round(n * 10) / 10).toFixed(1).replace('.', ',');
+function renderHub() {
+  const done = MODS.filter((_, i) => scores[i] != null).length;
+  const avg = MODS.reduce((t, _, i) => t + (scores[i] ?? 0), 0) / MODS.length;
+  const msg = avg >= 9 ? 'Excel·lent! Domines Internet i les xarxes del centre.' : avg >= 7 ? 'Molt bé! Tens clars els conceptes principals.' : avg >= 5 ? 'Aprovat. Repassa els vídeos on has fallat més.' : 'Torna a mirar els vídeos i prova-ho de nou.';
+  tz.innerHTML = `<div class="thead"><span class="eyebrow">Avalua't</span><h1>Comprova què has <em>après</em></h1>
+    <p class="tsub">Un test curt per a cada vídeo. Quan els facis tots, veuràs la teva nota mitjana final.</p></div>
+    <ol class="tgrid">${MODS.map((m, i) => { const sc = scores[i]; return `<li style="--i:${i}"><button class="tcard${sc != null ? ' done' : ''}" type="button" data-test="${i}">
+      <span class="tthumb" style="background-image:url(${m.src.replace('.mp4', '.jpg')})"><span class="num">TEST ${nn(i)}</span></span>
+      <span class="tbody"><b>${m.t}</b><small>${QZ[i].length} preguntes · vídeo de ${fmt(m.d)}</small></span>
+      <span class="tfoot"><span class="tstat">${sc != null ? 'Nota ' + nota(sc) : 'Pendent'}</span><span class="tgo">${sc != null ? 'Repetir' : 'Començar'} →</span></span></button></li>`; }).join('')}</ol>
+    <div class="tfinal"><span class="eyebrow">Nota mitjana final</span>${done < MODS.length
+      ? `<p>${done} de ${MODS.length} tests fets. Completa'ls tots per veure la teva nota final.</p><div class="track"><i style="width:${done / MODS.length * 100}%"></i></div>`
+      : `<p class="big">${nota(avg)}<small> / 10</small></p><p>${msg}</p><button class="ghost" type="button" data-reset>Tornar a començar</button>`}</div>`;
+  document.title = "Avalua't · Aula Digital";
+}
+let qi = 0, qn = 0, hits = 0, sel = -1, checked = false;
+function startQuiz(i) { qi = i; qn = 0; hits = 0; renderQ(); scrollTo(0, 0); }
+function renderQ() {
+  const Qs = QZ[qi]; sel = -1; checked = false;
+  const top = (label, w) => `<div class="qtop"><button type="button" data-hub>← Tots els tests</button><span>${label}</span></div><div class="track"><i style="width:${w}%"></i></div>`;
+  if (qn < Qs.length) {
+    const s = Qs[qn];
+    tz.innerHTML = `<div class="quiz swap">${top(`Pregunta ${qn + 1} de ${Qs.length}`, (qn + 1) / Qs.length * 100)}
+      <form class="card" id="qForm" novalidate><fieldset><legend><small>Test ${nn(qi)} · ${MODS[qi].t}</small>${s.q}</legend>
+      ${s.o.map((o, k) => `<label class="opt"><input type="radio" name="q" value="${k}"><span>${o}</span></label>`).join('')}
+      </fieldset><p class="qfb" id="qfb" aria-live="polite"></p><button class="cta" type="submit" disabled>Comprovar</button></form></div>`;
+  } else {
+    const sc = hits / Qs.length * 10; scores[qi] = sc; saveScores();
+    const next = MODS.findIndex((_, i) => scores[i] == null);
+    tz.innerHTML = `<div class="quiz swap">${top('Fet', 100)}<div class="card qres"><span class="eyebrow">Test ${nn(qi)} · ${MODS[qi].t}</span>
+      <p class="big">${nota(sc)}<small> / 10</small></p><p class="hint">Has encertat ${hits} de ${Qs.length} preguntes.</p>
+      <div class="row">${next >= 0 ? `<button class="cta" type="button" data-test="${next}">Següent test</button>` : `<button class="cta" type="button" data-hub>Veure la nota final</button>`}
+      <button class="ghost" type="button" data-mod="${qi}">Tornar a veure el vídeo</button></div></div></div>`;
+  }
+}
+tz.addEventListener('change', e => {
+  if (e.target.name !== 'q' || checked) return;
+  sel = +e.target.value; tz.querySelector('#qForm [type=submit]').disabled = false;
+});
+tz.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, btn = f.querySelector('[type=submit]');
+  if (checked) { qn++; renderQ(); return; }
+  if (sel < 0) return;
+  checked = true;
+  const s = QZ[qi][qn], ok = sel === s.a; if (ok) hits++;
+  f.querySelectorAll('.opt').forEach((l, k) => {
+    l.querySelector('input').disabled = true;
+    if (k === s.a) l.lastElementChild.classList.add('ok'); else if (k === sel) l.lastElementChild.classList.add('ko');
+  });
+  const fb = f.querySelector('#qfb'); fb.className = 'qfb ' + (ok ? 'ok' : 'ko');
+  fb.textContent = ok ? 'Correcte!' : 'No és correcte. La bona és: ' + s.o[s.a];
+  btn.textContent = qn + 1 < QZ[qi].length ? 'Següent' : 'Veure el resultat'; btn.focus();
+});
+
 /* ── Canvi de vista ── */
-const views = { landing: document.getElementById('landing'), ruta: document.getElementById('ruta'), video: document.getElementById('video') };
+const views = { landing: document.getElementById('landing'), ruta: document.getElementById('ruta'), video: document.getElementById('video'), tests: document.getElementById('tests') };
 let current = 'landing';
 function show(name, before) {
   if (name === current) { before && before(); return; }
@@ -588,6 +778,7 @@ function show(name, before) {
     from.hidden = true; from.classList.remove('out');
     if (name === 'ruta') { step = 0; ans.length = 0; render(); }
     if (name !== 'video') { document.title = 'Aula Digital'; modsEl.querySelectorAll('.mod').forEach(b => b.removeAttribute('aria-current')); }
+    if (name === 'tests') renderHub();
     before && before();
     to.classList.add('out'); to.hidden = false; scrollTo(0, 0);
     requestAnimationFrame(() => requestAnimationFrame(() => to.classList.remove('out')));
@@ -597,11 +788,15 @@ function show(name, before) {
 }
 document.addEventListener('click', e => {
   const m = e.target.closest('[data-mod]'); if (m) { openModule(+m.dataset.mod); return; }
-  const g = e.target.closest('[data-go]'); if (g) show(g.dataset.go);
+  const t = e.target.closest('[data-test]'); if (t) { const i = +t.dataset.test; setDock(false); show('tests', () => startQuiz(i)); return; }
+  if (e.target.closest('[data-hub]')) { renderHub(); scrollTo(0, 0); return; }
+  if (e.target.closest('[data-reset]')) { scores = {}; saveScores(); renderHub(); return; }
+  const g = e.target.closest('[data-go]'); if (g) { setDock(false); show(g.dataset.go); }
 });
 document.getElementById('back').onclick = () => { if (step > 0 && step < Q.length) { step--; render(); } else show('landing'); };
 const hm = location.hash.match(/^#m([0-5])$/);
 if (location.hash === '#ruta') { views.landing.hidden = true; views.ruta.hidden = false; current = 'ruta'; render(); }
+else if (location.hash === '#tests') { views.landing.hidden = true; views.tests.hidden = false; current = 'tests'; renderHub(); }
 else if (hm) { views.landing.hidden = true; views.video.hidden = false; current = 'video'; renderVideo(+hm[1]); }
 })();
 </script>
